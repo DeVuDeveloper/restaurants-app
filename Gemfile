@@ -57,3 +57,21 @@ gem 'devise'
 gem 'devise-bootstrap-views'
 gem 'rubocop', '>= 1.0', '< 2.0'
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
+gem 'net-smtp', require: false
+gem 'net-imap', require: false
+gem 'net-pop', require: false
+gem 'geokit-rails'
+
+# Google Maps
+gem 'gmaps4rails'
+gem 'underscore-rails'
+
+# Pictures slider
+gem 'owlcarousel-rails'
+gem "twitter-bootstrap-rails"
+# Datepicker
+gem 'momentjs-rails', '>= 2.9.0'
+gem 'bootstrap3-datetimepicker-rails', '~> 4.17.37'
+gem 'jquery-rails'
+gem 'jquery-turbolinks'
+gem 'coffee-script-source', '~> 1.10'

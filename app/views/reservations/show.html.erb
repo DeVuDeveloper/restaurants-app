@@ -1,0 +1,22 @@
+<p>
+  <strong>Restaurant:</strong>
+  <%= @reservation.restaurant.title %>
+</p>
+
+<p>
+  <strong>Date:</strong>
+  <%= l @reservation.date, :format => :date_with_time %>
+</p>
+
+<p>
+  <strong>Duration:</strong>
+  <%= @reservation.duration %>
+</p>
+
+<strong>You have invited <%= "no one" if @reservation.invitations.empty? %></strong>
+
+<% @reservation.invitations.each do |invite| %>
+  <p> <b><%= invite.first_name %> <%= invite.last_name %> </b><%= check_box_tag(:confirmed, invite.confirmed, invite.confirmed, :disabled => true) %></p>
+<% end %>
+
+<%= link_to 'Back', restaurant_reservations_path(@reservation.restaurant) %>

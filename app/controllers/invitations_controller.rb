@@ -1,7 +1,7 @@
 class InvitationsController < ApplicationController
   before_action :set_invitation, only: [:show, :edit, :update, :destroy]
-  skip_before_filter :verify_authenticity_token, :only => [:update, :destroy]
-  before_filter :authenticate_user!, :except => [:update, :destroy]
+  skip_before_action :verify_authenticity_token, :only => [:update, :destroy]
+  before_action :authenticate_user!, :except => [:update, :destroy]
 
   rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
 

@@ -1,0 +1,18 @@
+<p>
+  <strong>Title:</strong>
+  <%= @meal.title %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @meal.description %>
+</p>
+
+<p>
+  <strong>Price:</strong>
+  <%= @meal.price %>
+</p>
+
+<% if current_user.restaurant_manager(@restaurant) %>
+  <%= link_to 'Edit', edit_meal_path(@meal) %>
+<% end %>

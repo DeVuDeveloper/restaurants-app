@@ -1,0 +1,18 @@
+<p>
+  <strong>Title:</strong>
+  <%= @menu.title %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @menu.description %>
+</p>
+
+<%= link_to "Add meals", new_restaurant_menu_meal_path(@restaurant, @menu),
+                         :class => "btn btn-success" %>
+<p>
+
+<%= render "restaurants/menu" %>
+
+<%= link_to 'Edit menu', edit_restaurant_menu_path(@restaurant, @restaurant.menu), :class => "btn btn-primary" %>
+<%= link_to 'Back to restaurant', @restaurant %> |
