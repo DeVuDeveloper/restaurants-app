@@ -1,11 +1,7 @@
 class WelcomeController < ApplicationController
-
-  before_action :authenticate_user!, :except => [:index]
+  before_action :authenticate_user!, except: [:index]
 
   def index
-    if current_user
-      @invitations = current_user.invitations
-    end
+    @invitations = current_user.invitations if current_user
   end
-
 end

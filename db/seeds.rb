@@ -7,10 +7,10 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 
-admin = Admin.create!(:email => "admin@mail.com",
-                  :password => "admin1",
-                  :password_confirmation => "admin1")
-p "Created admin"
+# admin = Admin.create!(:email => "admin@mail.com",
+#                   :password => "admin1",
+#                   :password_confirmation => "admin1")
+# p "Created admin"
 
 res_eat_good = Restaurant.create!(:title => "Bubby's",
                                   :lat => rand(45.244..45.269),
@@ -72,21 +72,21 @@ p "Created restaurants and seats configurations"
 
 first_names = [ "Nicole", "Robert", "John", "Peter", "Tracy", "Mike", "Luke" ]
 last_names = [ "More", "Ras", "Pas", "Gars", "Leri", "Oldman", "Doe" ]
-10.times do |number|
-  manager = Manager.new(:email => "manager_#{number}@mail.com",
-                        :first_name => first_names[rand(6)],
-                        :last_name => last_names[rand(6)],
-                        :phone_number => "+1#{rand(100)}1#{rand(200)}",
-                        :password => "manager",
-                        :password_confirmation => "manager",
-                        :restaurant => res_eat_good,
-                        :lat => rand(45.244..45.269),
-                        :lng => rand(19.8233..19.83467),
-                        :confirmed_at => DateTime.now)
+# 10.times do |number|
+#   manager = Manager.new(:email => "manager_#{number}@mail.com",
+#                         :first_name => first_names[rand(6)],
+#                         :last_name => last_names[rand(6)],
+#                         :phone_number => "+1#{rand(100)}1#{rand(200)}",
+#                         :password => "manager",
+#                         :password_confirmation => "manager",
+#                         :restaurant => res_eat_good,
+#                         :lat => rand(45.244..45.269),
+#                         :lng => rand(19.8233..19.83467),
+#                         :confirmed_at => DateTime.now)
 
-  manager.save!
-end
-p "Created managers"
+#   manager.save!
+# end
+# p "Created managers"
 
 
 

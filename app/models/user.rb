@@ -10,7 +10,7 @@ class User < ActiveRecord::Base
                    lat_column_name: :lat,
                    lng_column_name: :lng
 
-
+  belongs_to :restaurant, -> { where role == 'manager' }
 
   has_many :friendships
   has_many :invitations

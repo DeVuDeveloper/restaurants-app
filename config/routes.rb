@@ -24,7 +24,7 @@ Rails.application.routes.draw do
 
 
   resource :users do
-    resources :friendships, :except => [:edit, :update, :new]
+    resources :friendships
 
     resources :reviews, :only => [:index, :show, :update]
   end
