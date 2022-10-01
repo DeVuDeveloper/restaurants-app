@@ -7,7 +7,7 @@
       <% invitation.reservation.expired? %>
 
         <div class="col-md-4">
-         
+          <div class="panel panel-<%= panel_class(invitation) %>">
             <div class="panel panel-heading"><%= invitation.restaurant.title %> restaurant invitation</div>
             <div class="panel panel-body">
               <p>
@@ -15,7 +15,7 @@
                 <b><%= invitation.restaurant.title %></b> restaurant.
 
                 When?
-                <b><%= l invitation.date %></b>
+                <b><%= l invitation.date, :format => :date_with_time %></b>
                 for
                 <b><%= invitation.duration %> <%= invitation.duration == 1 ? "hour" : "hours" %>.</b>
                 Who else is coming?
@@ -32,7 +32,7 @@
                 <% end %>
               </p>
 
-              
+              <% unless invitation.expired? %>
                 <% if invitation.confirmed == nil %>
                   <div class="text-center">
                     <%= link_to "Accept", guest_invitation_path(invitation.user_id,
@@ -52,8 +52,8 @@
                   <% else %>
                     You have <b>not</b> accepted this invitation.
                   <% end %>
-               
-              
+                <% end %>
+              <% else %>
                 <% if invitation.confirmed %>
                   You have accepted this invitation.
                 <% else %>

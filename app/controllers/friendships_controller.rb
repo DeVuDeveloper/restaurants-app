@@ -1,22 +1,21 @@
 class FriendshipsController < ApplicationController
-  before_action :set_friendship, only: [:show, :edit, :destroy]
-  before_action :set_friend, :only => [:create, :destroy]
-  before_action :set_guests, :only => [:index]
+  before_action :set_friendship, only: %i[show edit destroy]
+  before_action :set_friend, only: %i[create destroy]
+  before_action :set_guests, only: [:index]
 
   def index
-    if params[:sort]
-      @friends = User.joins(:friendships).where("friendships.friend_id" => current_user.id).order(params[:sort])
-    else
-      @friends = User.joins(:friendships).where("friendships.friend_id" => current_user.id)
-    end
+    @friends = if params[:sort]
+                 User.joins(:friendships).where('friendships.friend_id' => current_user.id).order(params[:sort])
+               else
+                 User.joins(:friendships).where('friendships.friend_id' => current_user.id)
+               end
   end
 
-  def show
-  end
+  def show; end
 
   def create
     @friendship = current_user.friendships.build(friendship_params)
-    @inverse_friendship = @friend.friendships.build(:user_id => @friend, :friend_id => current_user.id)
+    @inverse_friendship = @friend.friendships.build(user_id: @friend, friend_id: current_user.id)
 
     respond_to do |format|
       ActiveRecord::Base.transaction do
@@ -33,7 +32,7 @@ class FriendshipsController < ApplicationController
 
   def destroy
     ActiveRecord::Base.transaction do
-      @friendship.friend.friendships.where(:friend_id => current_user.id).first.destroy
+      @friendship.friend.friendships.where(friend_id: current_user.id).first.destroy
       @friendship.destroy
     end
 
@@ -44,6 +43,7 @@ class FriendshipsController < ApplicationController
   end
 
   private
+
   def set_friendship
     @friendship = current_user.friendships.find(params[:id] || friendship_params[:friend_id])
   end
@@ -53,9 +53,7 @@ class FriendshipsController < ApplicationController
   end
 
   def set_guests
-    if params[:search]
-      @guest_search = Guest.search(params[:search])
-    end
+    @guest_search = Guest.search(params[:search]) if params[:search]
   end
 
   def friendship_params
