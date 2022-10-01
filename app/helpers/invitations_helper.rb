@@ -1,15 +1,13 @@
 module InvitationsHelper
-
   def panel_class(invitation)
-      if invitation.confirmed == nil
-        return "info"
-      elsif invitation.expired?
-        return "warning"
-      elsif invitation.confirmed == true
-        return "success"
-      else
-        return "danger"
-      end
+    if invitation.confirmed.nil?
+      'info'
+    elsif invitation.expired?
+      'warning'
+    elsif invitation.confirmed == true
+      'success'
+    else
+      'danger'
+    end
   end
-
 end

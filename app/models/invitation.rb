@@ -1,30 +1,24 @@
 class Invitation < ActiveRecord::Base
-
-  belongs_to :user, -> { where(:role => "guest") }
+  belongs_to :user, -> { where(role: 'guest') }
   belongs_to :reservation
 
-  has_one :review, :dependent => :destroy
+  has_one :review, dependent: :destroy
 
-  delegate :date, :to => :reservation
-  delegate :duration, :to => :reservation
-  delegate :restaurant, :to => :reservation
+  delegate :date, to: :reservation
+  delegate :duration, to: :reservation
+  delegate :restaurant, to: :reservation
 
-  delegate :first_name, :to => :user
-  delegate :last_name, :to => :user
+  delegate :first_name, to: :user
+  delegate :last_name, to: :user
 
   def expired?
-    date_range = self.date.localtime..self.date.localtime + self.duration.hours
+    date_range = date.localtime..date.localtime + duration.hours
 
-    unless date_range.cover?(Time.now)
-      unless self.review.present?
-        if self.confirmed
-          self.create_review!(:restaurant_id => self.restaurant.id,
-                              :user_id => self.user.id)
-        end
-      end
+    if !date_range.cover?(Time.now) && !review.present? && confirmed
+      create_review!(restaurant_id: restaurant.id,
+                     user_id: user.id)
     end
 
     !date_range.cover?(Time.now)
   end
-
 end

@@ -20,7 +20,7 @@ class FriendshipsController < ApplicationController
 
     respond_to do |format|
       ActiveRecord::Base.transaction do
-        if @friendship.save && @inverse_friendship.save && @friend.save
+        if @friendship.save && @inverse_friendship.save
           format.html { redirect_to users_friendships_path, notice: 'Friendship was successfully created.' }
           format.json { render :show, status: :created, location: @friendship }
         else

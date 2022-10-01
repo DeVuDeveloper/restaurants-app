@@ -1,7 +1,7 @@
 class InvitationsController < ApplicationController
-  before_action :set_invitation, only: [:show, :edit, :update, :destroy]
-  skip_before_action :verify_authenticity_token, :only => [:update, :destroy]
-  before_action :authenticate_user!, :except => [:update, :destroy]
+  before_action :set_invitation, only: %i[show edit update destroy]
+  skip_before_action :verify_authenticity_token, only: %i[update destroy]
+  before_action :authenticate_user!, except: %i[update destroy]
 
   rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
 
@@ -9,14 +9,16 @@ class InvitationsController < ApplicationController
     @invitations = current_user.invitations.all
   end
 
-  def show
-  end
+  def show; end
 
   def update
     if @invitation.updated_at == @invitation.created_at
       respond_to do |format|
         if @invitation.update(invitation_params)
-          format.html { redirect_to root_path, notice: "Thanks #{@user.first_name}, you have accepted an invitation to #{@invitation.restaurant.title} restaurant." }
+          format.html do
+            redirect_to root_path,
+                        notice: "Thanks #{@user.first_name}, you have accepted an invitation to #{@invitation.restaurant.title} restaurant."
+          end
         else
           format.html { render :edit }
           format.json { render json: @invitation.errors, status: :unprocessable_entity }
@@ -24,7 +26,7 @@ class InvitationsController < ApplicationController
       end
     else
       respond_to do |format|
-        format.html { redirect_to root_path, alert: "This invitation has been handled" }
+        format.html { redirect_to root_path, alert: 'This invitation has been handled' }
       end
     end
   end
@@ -38,6 +40,7 @@ class InvitationsController < ApplicationController
   end
 
   private
+
   def set_invitation
     if current_user
       if params[:guest_id] && current_user.id == params[:guest_id].to_i
@@ -59,7 +62,6 @@ class InvitationsController < ApplicationController
   end
 
   def record_not_found
-    render text: "404 Not Found", status: 404
+    render text: '404 Not Found', status: 404
   end
-
 end

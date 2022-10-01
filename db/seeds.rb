@@ -6,21 +6,25 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-p "Creating admin"
-admin = Admin.new(:email => "admin@reservations.com",
-                  :password => "adminadmin",
-                  :password_confirmation => "adminadmin",
-                  :confirmed_at => DateTime.now)
 
-admin.save!
+admin = Admin.create!(:email => "admin@mail.com",
+                  :password => "admin1",
+                  :password_confirmation => "admin1")
+p "Created admin"
 
-
-
-p "Creating restaurants and seats configurations"
-res_eat_good = Restaurant.create!(:title => "Eat good",
+res_eat_good = Restaurant.create!(:title => "Bubby's",
                                   :lat => rand(45.244..45.269),
                                   :lng => rand(19.8233..19.83467),
-                                  :description => "Vegan")
+                                  :description => "Bubby’s opened on Thanksgiving Day 1990. Chef")
+ Restaurant.create!(:title => "Old Ebbitt Grill",
+                                  :lat => rand(45.244..45.269),
+                                  :lng => rand(19.8233..19.83467),
+                                  :description => "The Old Ebbitt Grill, Washington's oldest saloon")
+ Restaurant.create!(:title => "Cutlets",
+                                  :lat => rand(45.244..45.269),
+                                  :lng => rand(19.8233..19.83467),
+                                  :description => "Simply put, we’re here to bring you a sandwich experience you can feel good about.")
+
 configuration_1 = SeatsConfiguration.new(:restaurant_id => res_eat_good.id)
 
 20.times do |number|
@@ -50,7 +54,7 @@ configuration_1 = SeatsConfiguration.new(:restaurant_id => all_u_can_eat.id)
 end
 configuration_1.save!
 
-meals = ["Soup", "Rigoto", "Pljeskavica", "Belo meso", "Stake", "Bread", "Cheese",
+meals = ["Soup", "Rigoto", "Tacos", "Fish", "Stake", "Bread", "Cheese",
          "Carrots", "Pork", "Cake"]
 descriptions = ["Delicious", "Nice", "Mouth-watering", "Pleasing", "Eatable", "Cheap",
                 "Easy", "Hard"]
@@ -63,33 +67,33 @@ Restaurant.all.each do |restaurant|
   end
 end
 
+p "Created restaurants and seats configurations"
 
 
-p "Creating managers"
-first_names = [ "Nikola", "Branka", "John", "Peter", "Branko", "Zdravko", "Dragana" ]
-last_names = [ "Jovanov", "Ras", "Pas", "Gars", "Leri", "Oldman", "Stasanov" ]
+first_names = [ "Nicole", "Robert", "John", "Peter", "Tracy", "Mike", "Luke" ]
+last_names = [ "More", "Ras", "Pas", "Gars", "Leri", "Oldman", "Doe" ]
 10.times do |number|
-  manager = Manager.new(:email => "manager_#{number}@reservations.com",
+  manager = Manager.new(:email => "manager_#{number}@mail.com",
                         :first_name => first_names[rand(6)],
                         :last_name => last_names[rand(6)],
-                        :phone_number => "3435#{rand(100)}1#{rand(200)}",
-                        :password => "managermanager",
-                        :password_confirmation => "managermanager",
+                        :phone_number => "+1#{rand(100)}1#{rand(200)}",
+                        :password => "manager",
+                        :password_confirmation => "manager",
                         :restaurant => res_eat_good,
                         :lat => rand(45.244..45.269),
                         :lng => rand(19.8233..19.83467),
                         :confirmed_at => DateTime.now)
-  manager.skip_confirmation!
+
   manager.save!
 end
+p "Created managers"
 
 
 
-p "Creating users and reservations"
-valid_email = [ "nikolaseap@gmail.com", "nikoladjuza@live.com", "nikolalsvk@yahoo.com",
-                "brankabiber@gmail.com", "milosmitrovicmitke@gmail.com", "eilija@gmail.com",
-                "mihailo93@gmail.com", "Rudakijevic93@gmail.com", "Kibo93@live.com",
-                "baataa100@gmail.com" ]
+valid_email = [ "john@gmail.com",
+                "robert@gmail.com", "kane@gmail.com", "elia@gmail.com",
+                "queen@gmail.com", "yay@gmail.com", "kimler@live.com",
+                "wow@gmail.com" ]
 
 valid_email.count.times do |number|
   guest = Guest.new(:email => valid_email[number],
@@ -101,7 +105,6 @@ valid_email.count.times do |number|
                     :lat => rand(45.244..45.269),
                     :lng => rand(19.8233..19.83467),
                     :confirmed_at => DateTime.now)
-  guest.skip_confirmation!
   guest.save!
 
   unless number == 0 || number == valid_email.count
@@ -124,3 +127,4 @@ valid_email.count.times do |number|
 
   end
 end
+p "Created users and reservations"
