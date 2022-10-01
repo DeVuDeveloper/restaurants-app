@@ -1,4 +1,4 @@
-class Restaurant < ActiveRecord::Base
+class Restaurant < ApplicationRecord
   acts_as_mappable default_units: :meters,
                    default_formula: :sphere,
                    distance_field_name: :distance,

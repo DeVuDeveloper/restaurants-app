@@ -1,4 +1,4 @@
-class Invitation < ActiveRecord::Base
+class Invitation < ApplicationRecord
   belongs_to :user, -> { where(role: 'guest') }
   belongs_to :reservation
 

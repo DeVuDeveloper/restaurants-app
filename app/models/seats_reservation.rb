@@ -1,2 +1,2 @@
-class SeatsReservation < ActiveRecord::Base
+class SeatsReservation < ApplicationRecord
 end

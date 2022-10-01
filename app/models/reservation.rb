@@ -1,4 +1,4 @@
-class Reservation < ActiveRecord::Base
+class Reservation < ApplicationRecord
   has_and_belongs_to_many :seats
   has_many :invitations
   has_one :review

@@ -15,9 +15,9 @@ class ReservationsController < ApplicationController
 
     ActiveRecord::Base.transaction do
       @reservation = Reservation.create(date: reservation_params[:date],
-                                     duration: reservation_params[:duration][0],
-                                     restaurant_id: @restaurant.id,
-                                     user_id: current_user.id)
+                                        duration: reservation_params[:duration][0],
+                                        restaurant_id: @restaurant.id,
+                                        user_id: current_user.id)
 
       @seat_info.each do |seat|
         seat = @restaurant.seats_configuration.seats.where(x: seat[:x],

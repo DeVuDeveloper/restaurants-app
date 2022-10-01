@@ -1,4 +1,4 @@
-class Seat < ActiveRecord::Base
+class Seat < ApplicationRecord
   belongs_to :seats_configuration
 
   has_and_belongs_to_many :reservations

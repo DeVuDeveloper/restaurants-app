@@ -1,4 +1,4 @@
-class Friendship < ActiveRecord::Base
+class Friendship < ApplicationRecord
 
   belongs_to :guest, :foreign_key => :user_id
 

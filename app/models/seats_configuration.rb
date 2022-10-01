@@ -1,4 +1,4 @@
-class SeatsConfiguration < ActiveRecord::Base
+class SeatsConfiguration < ApplicationRecord
   belongs_to :restaurant
 
   has_many :seats
