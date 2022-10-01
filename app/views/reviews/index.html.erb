@@ -20,7 +20,7 @@
       <% @reviews.each do |review| %>
         <tr>
           <td><%= review.restaurant.title %>
-          <td><%= l review.reservation.date, :format => :date_with_time %>
+          <td><%= l review.reservation.date %>
           <td><%= review.reservation.duration %>
           <td><%= review.rating ? review.rating : "Not yet rated" %>
           <td>

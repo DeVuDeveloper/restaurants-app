@@ -55,12 +55,12 @@ end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'devise'
 gem 'devise-bootstrap-views'
-gem 'rubocop', '>= 1.0', '< 2.0'
-gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
-gem 'net-smtp', require: false
+gem 'geokit-rails'
 gem 'net-imap', require: false
 gem 'net-pop', require: false
-gem 'geokit-rails'
+gem 'net-smtp', require: false
+gem 'rubocop', '>= 1.0', '< 2.0'
+gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 
 # Google Maps
 gem 'gmaps4rails'
@@ -68,10 +68,12 @@ gem 'underscore-rails'
 
 # Pictures slider
 gem 'owlcarousel-rails'
-gem "twitter-bootstrap-rails"
+gem 'twitter-bootstrap-rails'
 # Datepicker
-gem 'momentjs-rails', '>= 2.9.0'
 gem 'bootstrap3-datetimepicker-rails', '~> 4.17.37'
+gem 'coffee-rails', '~> 5.0'
 gem 'jquery-rails'
 gem 'jquery-turbolinks'
-gem 'coffee-script-source', '~> 1.10'
+gem 'momentjs-rails', '>= 2.9.0'
+gem 'railties', '~> 6.1', '>= 6.1.4.1'
+gem 'zeitwerk', '~> 2.6'

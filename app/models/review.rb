@@ -1,12 +1,10 @@
 class Review < ActiveRecord::Base
-
   belongs_to :user
   belongs_to :restaurant
-  belongs_to :invitation
+  has_one :invitation
   belongs_to :reservation
 
   def reservation
-    self[:reservation_id] ? Reservation.find(self[:reservation_id]) : self.invitation.reservation
+    self[:reservation_id] ? Reservation.find(self[:reservation_id]) : invitation.reservation
   end
-
 end

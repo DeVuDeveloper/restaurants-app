@@ -11,7 +11,7 @@ admin = Admin.new(:email => "admin@reservations.com",
                   :password => "adminadmin",
                   :password_confirmation => "adminadmin",
                   :confirmed_at => DateTime.now)
-admin.skip_confirmation!
+
 admin.save!
 
 

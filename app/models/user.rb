@@ -2,14 +2,13 @@ class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable,
-         :confirmable
+         :recoverable, :rememberable, :trackable, :validatable
 
-  acts_as_mappable :default_units => :meters,
-                   :default_formula => :sphere,
-                   :distance_field_name => :distance,
-                   :lat_column_name => :lat,
-                   :lng_column_name => :lng
+  acts_as_mappable default_units: :meters,
+                   default_formula: :sphere,
+                   distance_field_name: :distance,
+                   lat_column_name: :lat,
+                   lng_column_name: :lng
 
   belongs_to :restaurant
 
@@ -22,31 +21,31 @@ class User < ActiveRecord::Base
   before_save :set_full_name
 
   def admin?
-    self.role == "admin"
+    role == 'admin'
   end
 
   def guest?
-    self.role == "guest"
+    role == 'guest'
   end
 
   def manager?
-    self.role == "manager"
+    role == 'manager'
   end
 
   def restaurant_manager(restaurant)
-    self.restaurant_id == restaurant.id
+    restaurant_id == restaurant.id
   end
 
   def friends_rating(restaurant_id)
     ratings = []
 
-    self.friendships.each do |friendship|
-      avg_rating = friendship.friend.reviews.where(:restaurant_id => restaurant_id).average(:rating).to_f
+    friendships.each do |friendship|
+      avg_rating = friendship.friend.reviews.where(restaurant_id:).average(:rating).to_f
       ratings << avg_rating unless avg_rating == 0
     end
 
     if ratings.count == 0
-      return "Not rated yet"
+      'Not rated yet'
     else
       rating = ratings.sum / ratings.count
       rating.round(2)
@@ -54,39 +53,36 @@ class User < ActiveRecord::Base
   end
 
   def friend?(guest)
-    !self.friendships.where(:user_id => self.id, :friend_id => guest.id).empty?
+    !friendships.where(user_id: id, friend_id: guest.id).empty?
   end
 
   def friendship(friend)
-    Friendship.where(:user_id => self.id, :friend_id => friend.id).first
+    Friendship.where(user_id: id, friend_id: friend.id).first
   end
 
   def common_visits(friend)
-    if self.reviews || !self.reviews.empty?
+    if reviews || !reviews.empty?
       visits = 0
-      self.reviews.each do |review|
-        if review.reservation.user.id == friend.id
-          visits = visits + 1
-        else
-          visits = visits + review.reservation.invitations.where(:user_id => friend.id, :confirmed => true).count
-        end
+      reviews.each do |review|
+        visits = if review.reservation.user.id == friend.id
+                   visits + 1
+                 else
+                   visits + review.reservation.invitations.where(user_id: friend.id, confirmed: true).count
+                 end
       end
-      return visits
+      visits
     else
-      return "You haven't been anywhere"
+      "You haven't been anywhere"
     end
   end
 
   private
 
   def set_role
-    self.role ||= "guest"
+    self.role ||= 'guest'
   end
 
   def set_full_name
-    if self.first_name && self.last_name
-      self.full_name = "#{self.first_name} #{self.last_name}"
-    end
+    self.full_name = "#{first_name} #{last_name}" if first_name && last_name
   end
-
 end

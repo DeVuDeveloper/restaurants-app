@@ -4,12 +4,11 @@ class SeatsConfiguration < ActiveRecord::Base
   has_many :seats
 
   def seat?(x, y)
-    !self.seats.where(:x => x, :y => y).empty?
+    !seats.where(x:, y:).empty?
   end
 
   def seat_reserved?(x, y, time)
-    seat = self.seats.where(:x => x, :y => y)
+    seat = seats.where(x:, y:)
     seat.first.reserved?(time)
   end
-
 end

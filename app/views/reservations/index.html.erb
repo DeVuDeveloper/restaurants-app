@@ -18,7 +18,7 @@
       <tbody>
         <% @reservations.each do |reservation| %>
           <tr>
-            <td><%= l reservation.date, :format => :date_with_time %></td>
+            <td><%= l reservation.date %></td>
             <td><%= reservation.duration %></td>
             <td><%= link_to 'Show', restaurant_reservation_path(reservation.restaurant, reservation) %></td>
             <td>

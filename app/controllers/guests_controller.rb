@@ -1,21 +1,20 @@
 class GuestsController < ApplicationController
-  before_action :set_guest, only: [:show, :edit, :update, :destroy]
-  before_action :set_guests, :only => [:show]
+  before_action :set_guest, only: %i[show edit update destroy]
+  before_action :set_guests, only: [:show]
 
   def index
     @guests = Guest.all
   end
 
   def show
-    if params[:sort]
-      @friends = User.joins(:friendships).where("friendships.friend_id" => current_user.id).order(params[:sort])
-    else
-      @friends = User.joins(:friendships).where("friendships.friend_id" => current_user.id)
-    end
+    @friends = if params[:sort]
+                 User.joins(:friendships).where('friendships.friend_id' => current_user.id).order(params[:sort])
+               else
+                 User.joins(:friendships).where('friendships.friend_id' => current_user.id)
+               end
   end
 
-  def edit
-  end
+  def edit; end
 
   def update
     respond_to do |format|
@@ -30,14 +29,13 @@ class GuestsController < ApplicationController
   end
 
   private
+
   def set_guest
     @guest = Guest.find(params[:id])
   end
 
   def set_guests
-    if params[:search]
-      @guest_search = Guest.search(params[:search])
-    end
+    @guest_search = Guest.search(params[:search]) if params[:search]
   end
 
   def guest_params

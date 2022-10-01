@@ -1,19 +1,15 @@
 class Seat < ActiveRecord::Base
-
-  belongs_to :seat_configuration
+  belongs_to :seats_configuration
 
   has_and_belongs_to_many :reservations
 
   def reserved?(time)
-    return false if self.reservations.empty?
+    return false if reservations.empty?
 
-    self.reservations.each do |reservation|
+    reservations.each do |reservation|
       date_range = reservation.date.localtime..reservation.date.localtime + reservation.duration.hours
-      if date_range.cover?(time.to_time)
-        return true
-      end
+      return true if date_range.cover?(time.to_time)
     end
-    return false
+    false
   end
-
 end

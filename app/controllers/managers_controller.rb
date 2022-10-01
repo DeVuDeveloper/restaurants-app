@@ -1,23 +1,21 @@
 class ManagersController < ApplicationController
-  before_action :set_manager, only: [:show, :edit, :update, :destroy]
+  before_action :set_manager, only: %i[show edit update destroy]
 
   def index
     @managers = Manager.all
   end
 
-  def show
-  end
+  def show; end
 
   def new
     @manager = Manager.new
   end
 
-  def edit
-  end
+  def edit; end
 
   def create
     @manager = Manager.new(manager_params)
-    @manager.skip_confirmation!
+    
 
     respond_to do |format|
       if @manager.save
@@ -51,6 +49,7 @@ class ManagersController < ApplicationController
   end
 
   private
+
   def set_manager
     @manager = Manager.find(params[:id])
   end
