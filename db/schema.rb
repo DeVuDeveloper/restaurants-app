@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_09_30_113838) do
+ActiveRecord::Schema.define(version: 2022_10_01_180020) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -58,6 +58,8 @@ ActiveRecord::Schema.define(version: 2022_09_30_113838) do
     t.bigint "restaurant_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "invitation_id"
+    t.index ["invitation_id"], name: "index_reservations_on_invitation_id"
     t.index ["restaurant_id"], name: "index_reservations_on_restaurant_id"
   end
 

@@ -112,19 +112,6 @@ valid_email.count.times do |number|
     Friendship.create(:user_id => guest.id, :friend_id => friend.id)
     Friendship.create(:friend_id => guest.id, :user_id => friend.id)
   end
-
-  rand(3).times do |number|
-    reservation = Reservation.create!(:date => Time.now - rand(1..30).days,
-                                      :duration => 1,
-                                      :restaurant_id => number + 1,
-                                      :user_id => guest.id)
-    unless guest.friendships.empty?
-      friend = guest.friendships.first.friend
-      invitation = friend.invitations.create!(:user_id => friend.id,
-                                              :reservation_id => reservation.id,
-                                              :confirmed => true)
-    end
-
-  end
 end
+
 p "Created users and reservations"
