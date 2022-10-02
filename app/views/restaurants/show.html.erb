@@ -4,67 +4,46 @@
     <%= @restaurant.description %>
   </p>
 </div>
-
 <% if @seats.present? %>
   <%= render "choose_date" %>
-
   <div class="col-md-12">
     <%= render "reserve_tables" %>
   </div>
-
 <% else %>
   <%= render "configuration_set_up" %>
 <% end %>
-
-<div class="col-md-12"><br></div>
-
-<div class="col-md-12">
-
-  <%= render "menu" %>
-
+<div class="col-md-12"><br>
 </div>
-
-
-
-<div class="col-md-12"><br></div>
-
 <div class="col-md-12">
-
   <%= render "menu" %>
-
+</div>
+<div class="col-md-12"><br>
 </div>
 
 <div class="col-md-12 text-center">
   <div class="panel panel-default">
     <div class="panel panel-body">
-
       <div style='width: 800px;' class="text-center">
         <div id="map" style='width: 800px; height: 400px;'></div>
       </div>
-
     </div>
   </div>
 </div>
-
-<div class="col-md-12"><br></div>
-
+<div class="col-md-12"><br>
+</div>
 <div class="col-md-12">
-
   <%= render "managers" %>
-
   <div class="text-center">
-  <% if current_user.restaurant_manager(@restaurant) %>
-    <%= link_to 'Edit', edit_restaurant_path(@restaurant), :class => "btn btn-primary" %> |
-    <%= link_to 'Edit menu', edit_restaurant_menu_path(@restaurant, @restaurant.menu), :class => "btn btn-primary" %> |
-  <% end %>
-  <%= link_to 'Back', restaurants_path, :class => "btn btn-info" %><br>
+    <% if current_user.restaurant_manager(@restaurant) %>
+      <%= link_to 'Edit', edit_restaurant_path(@restaurant), :class => "btn btn-primary" %> |
+      <%= link_to 'Edit menu', edit_restaurant_menu_path(@restaurant, @restaurant.menu), :class => "btn btn-primary" %> |
+    <% end %>
+    <%= link_to 'Back', restaurants_path, :class => "btn btn-info" %><br>
   </div>
 </div>
-
-<div class="col-md-12"><br></div>
-
+<div class="col-md-12"><br>
+</div>
 <script>
-
   const handler = Gmaps.build('Google');
   handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
     markers = handler.addMarkers([
@@ -79,4 +58,3 @@
     handler.getMap().setZoom(17);
   });
 </script>
-<%= console %>

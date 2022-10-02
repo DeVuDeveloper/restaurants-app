@@ -1,4 +1,4 @@
-class User <  ApplicationRecord
+class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -9,8 +9,8 @@ class User <  ApplicationRecord
                    distance_field_name: :distance,
                    lat_column_name: :lat,
                    lng_column_name: :lng
-  
-  # belongs_to :restaurant
+
+  belongs_to :restaurant
 
   has_many :friendships
   has_many :invitations
