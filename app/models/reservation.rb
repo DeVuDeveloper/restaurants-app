@@ -14,7 +14,7 @@ class Reservation < ActiveRecord::Base
   def expired?
     date_range = date.localtime..date.localtime + duration.hours
 
-    if !date_range.cover?(Time.now) && !review.present?
+    if !date_range.cover?(Time.now) && review.present?
       create_review!(restaurant_id: restaurant.id,
                      user_id: user.id)
     end
