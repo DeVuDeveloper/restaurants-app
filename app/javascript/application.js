@@ -18,6 +18,13 @@
 //= require moment
 //= require bootstrap-datetimepicker
 //= require underscore
-//= require gmaps/google
+//= require gmaps_google
 //= require_tree .
 //= require turbolinks
+
+
+import 'underscore'
+
+
+window.jQuery = $;
+window.$ = $;

@@ -1,7 +1,7 @@
 class SeatsConfiguration < ApplicationRecord
   belongs_to :restaurant
 
-  has_many :seats
+  has_many :seats, dependent: :destroy
 
   def seat?(x, y)
     !seats.where(x:, y:).empty?

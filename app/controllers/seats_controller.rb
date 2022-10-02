@@ -1,10 +1,10 @@
 class SeatsController < ApplicationController
-  before_action :set_seat, only: [:show, :edit, :update, :destroy]
+  before_action :set_seat, only: %i[show edit update destroy]
 
-  def show
-  end
+  def show; end
 
   private
+
   def set_seat
     @seat = Seat.find(params[:id])
   end

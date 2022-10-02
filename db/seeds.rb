@@ -8,9 +8,9 @@
 
 
 # admin = Admin.create!(:email => "admin@mail.com",
-#                   :password => "admin1",
+#                  :password => "admin1",
 #                   :password_confirmation => "admin1")
-# p "Created admin"
+#  p "Created admin"
 
 res_eat_good = Restaurant.create!(:title => "Bubby's",
                                   :lat => rand(45.244..45.269),
@@ -26,11 +26,13 @@ res_eat_good = Restaurant.create!(:title => "Bubby's",
                                   :description => "Simply put, we’re here to bring you a sandwich experience you can feel good about.")
 
 configuration_1 = SeatsConfiguration.new(:restaurant_id => res_eat_good.id)
+p "Seats configuration created"
 
 20.times do |number|
   configuration_1.seats.new(:x => rand(10), :y => rand(10))
 end
 configuration_1.save!
+p "Created seats"
 
 every_nice = Restaurant.create!(:title => "Everything is nice here",
                                 :lat => rand(45.244..45.269),

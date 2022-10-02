@@ -5,7 +5,7 @@
   </p>
 </div>
 
-<% if @seats %>
+<% if @seats.present? %>
   <%= render "choose_date" %>
 
   <div class="col-md-12">
@@ -13,10 +13,18 @@
   </div>
 
 <% else %>
-
   <%= render "configuration_set_up" %>
-
 <% end %>
+
+<div class="col-md-12"><br></div>
+
+<div class="col-md-12">
+
+  <%= render "menu" %>
+
+</div>
+
+
 
 <div class="col-md-12"><br></div>
 
@@ -56,29 +64,19 @@
 <div class="col-md-12"><br></div>
 
 <script>
-  var directionsDisplay = new google.maps.DirectionsRenderer();
-  var directionsService = new google.maps.DirectionsService();
 
-  function calcRoute() {
-    var origin      = new google.maps.LatLng(<%= current_user.lat %>, <%= current_user.lng %>);
-    var destination = new google.maps.LatLng(<%= @restaurant.lat %>,<%= @restaurant.lng %>);
-    var request = {
-        origin:      origin,
-        destination: destination,
-        travelMode:  google.maps.TravelMode.DRIVING
-    };
-    directionsService.route(request, function(response, status) {
-      if (status == google.maps.DirectionsStatus.OK) {
-        directionsDisplay.setDirections(response);
+  const handler = Gmaps.build('Google');
+  handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
+    markers = handler.addMarkers([
+      {
+        "lat": <%= current_user.lat %>,
+        "lng": <%= current_user.lng%>,
+        "infowindow": "<%= current_user.full_name %>'s location"
       }
-    });
-  }
-
-  calcRoute();
-
-  var handler = Gmaps.build('Google');
-  handler.buildMap({ internal: {id: 'map'}}, function(){
-    directionsDisplay.setMap(handler.getMap());
+    ]);
+    handler.bounds.extendWith(markers);
+    handler.fitMapToBounds();
+    handler.getMap().setZoom(17);
   });
 </script>
-
+<%= console %>

@@ -1,5 +1,5 @@
 class ConfigurationsController < ApplicationController
-  before_action :set_configuration, only: [:create, :setup_seats]
+  before_action :set_configuration, only: %i[create setup_seats]
 
   def create
     @configuration = SeatsConfiguration.new(configuration_params)
@@ -16,24 +16,24 @@ class ConfigurationsController < ApplicationController
   end
 
   def setup_seats
-    seats = params.select { |key| key.to_s.include?("seat") }
+    seats = params.select { |key| key.to_s.include?('seat') }
     seat_info = seats.values.select { |values| values[:reserved] }
 
     seat_info.each do |seat|
-      @configuration.seats.new(:x => seat[:x],
-                               :y => seat[:y],
-                               :reserved => false)
+      @configuration.seats.new(x: seat[:x],
+                               y: seat[:y],
+                               reserved: false)
     end
 
     respond_to do |format|
       @configuration.save
 
-      format.html { redirect_to @configuration.restaurant, notice: "Configuration has been set up." }
+      format.html { redirect_to @configuration.restaurant, notice: 'Configuration has been set up.' }
     end
-
   end
 
   private
+
   def set_configuration
     @configuration = SeatsConfiguration.find(params[:id] || params[:configuration_id])
   end

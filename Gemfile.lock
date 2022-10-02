@@ -101,6 +101,9 @@ GEM
     erubi (1.11.0)
     execjs (2.8.1)
     ffi (1.15.5)
+    font-awesome-sass (6.2.0)
+      sassc (~> 2.0)
+    geocoder (1.8.1)
     geokit (1.13.1)
     geokit-rails (2.3.2)
       geokit (~> 1.5)
@@ -295,6 +298,8 @@ DEPENDENCIES
   coffee-rails (~> 5.0)
   devise
   devise-bootstrap-views
+  font-awesome-sass (~> 6.2.0)
+  geocoder
   geokit-rails
   gmaps4rails
   jbuilder (~> 2.7)

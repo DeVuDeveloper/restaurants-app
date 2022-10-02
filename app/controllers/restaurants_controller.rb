@@ -1,5 +1,5 @@
 class RestaurantsController < ApplicationController
-  before_action :set_restaurant, only: [:show, :edit, :update, :destroy]
+  before_action :set_restaurant, only: %i[show edit update destroy]
 
   def index
     if params[:sort]
@@ -22,8 +22,7 @@ class RestaurantsController < ApplicationController
     @restaurant = Restaurant.new
   end
 
-  def edit
-  end
+  def edit; end
 
   def create
     @restaurant = Restaurant.new(restaurant_params)
@@ -60,12 +59,13 @@ class RestaurantsController < ApplicationController
   end
 
   private
+
   def set_restaurant
-    if current_user.manager?
-      @restaurant = current_user.restaurant
-    else
-      @restaurant = Restaurant.find(params[:id])
-    end
+    @restaurant = if current_user.manager?
+                    current_user.restaurant
+                  else
+                    Restaurant.find(params[:id])
+                  end
   end
 
   def restaurant_params

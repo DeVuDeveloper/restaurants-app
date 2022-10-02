@@ -62,18 +62,17 @@ gem 'net-smtp', require: false
 gem 'rubocop', '>= 1.0', '< 2.0'
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 
-# Google Maps
+gem 'geocoder'
 gem 'gmaps4rails'
 gem 'underscore-rails'
 
-# Pictures slider
-gem 'owlcarousel-rails'
-gem 'twitter-bootstrap-rails'
-# Datepicker
 gem 'bootstrap3-datetimepicker-rails', '~> 4.17.37'
 gem 'coffee-rails', '~> 5.0'
+gem 'font-awesome-sass', '~> 6.2.0'
 gem 'jquery-rails'
 gem 'jquery-turbolinks'
 gem 'momentjs-rails', '>= 2.9.0'
+gem 'owlcarousel-rails'
 gem 'railties', '~> 6.1', '>= 6.1.4.1'
+gem 'twitter-bootstrap-rails'
 gem 'zeitwerk', '~> 2.6'
