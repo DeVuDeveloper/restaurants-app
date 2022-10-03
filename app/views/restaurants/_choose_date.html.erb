@@ -1,8 +1,6 @@
-<div class="col-md-6">
+<div class="col-md-5">
   <%= form_tag(restaurant_path(@restaurant), :method => :get, :class => "form-inline") do %>
-
     <%= label_tag :date, "Choose a date for your reservation" %>
-
         <% if params[:date] && params[:duration] %>
           <div class="form-group">
             <%= text_field_tag :date,
@@ -25,7 +23,7 @@
                                :class => "form-control" %>
             <span class="input-group-addon">
               <span class="glyphicon glyphicon-calendar"></span>
-            </span>
+            
           </div>
           <p>
           <div class="form-group">
@@ -39,7 +37,6 @@
                                       :class => "form-control" %>
           </div>
        <% end %>
-
     <%= submit_tag "Show", :class => "form-control" %></br>
   <% end %>
 </div>
@@ -49,16 +46,13 @@
     <div class="panel panel-body">
       <div class="row" style="margin: -5px">
         <div data-toggle="buttons" class="btn-group itemcontent">
-          <%= empty_check_box %>
-          <p>Space</p>
+          <%= empty_check_box %> - Empty space
         </div>
         <div data-toggle="buttons" class="btn-group itemcontent">
-          <%= reserved_check_box %>
-          <p>Reserved</p>
+          <%= reserved_check_box %> - Reserved table
         </div>
         <div data-toggle="buttons" class="btn-group itemcontent">
-          <%= free_check_box(1, 1, 1) %>
-          <p>Free</p>
+          <%= free_check_box(1, 1, 1) %> - Free table (clickable)
         </div>
       </div>
     </div>
