@@ -1,0 +1,71 @@
+<% if params[:date] && params[:duration] %>
+  <%= form_tag restaurant_reservations_path(@restaurant) do %>
+    <div class="col-md-6">
+      <table>
+
+        <tbody>
+        <% cache([@configuration, @seats]) do %>
+          <% @configuration.height.times do |rows| %>
+            <tr>
+              <% @configuration.width.times do |cols| %>
+                <td>
+                <div data-toggle="buttons" class="btn-group itemcontent">
+                  <%= seats_check_box(@configuration, rows, cols, @date || Time.now) %>
+                </div>
+                </td>
+              <% end %>
+            </tr>
+          <% end %>
+        <% end %>
+        </tbody>
+
+      </table>
+    </div>
+
+    <div class="col-md-6"></div>
+    <div class="col-md-6">
+      <% if current_user.guest? %>
+        <div class="panel panel-default">
+          <div class="panel panel-heading">Invite a friend to a restaurant</div>
+          <div class="panel panel-body">
+            <div class="table-responsive">
+              <% if current_user.friendships.count == 0 %>
+                Seems like you don't have any friends. Go to your profile to add some.
+              <% else %>
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th>First name</th>
+                      <th>Last name</th>
+                      <th>Email</th>
+                      <th colspan="3"></th>
+                    </tr>
+                  </thead>
+
+                  <tbody>
+                  <% current_user.friendships.each do |friendship| %>
+                    <tr>
+                      <td><%= friendship.friend.first_name %>
+                      <td><%= friendship.friend.last_name %>
+                      <td><%= friendship.friend.email %>
+                      <%= hidden_field_tag("friendship_#{friendship.id}[friend_id]", friendship.friend_id) %>
+                      <td><%= check_box_tag("friendship_#{friendship.id}[selected]", true, false) %></td>
+                    </tr>
+                  <% end %>
+                </table>
+              <% end %>
+            </div>
+          </div>
+
+          <%= hidden_field_tag("reservation[date]", params[:date]) %>
+          <%= hidden_field_tag("reservation[duration]", params[:duration]) %>
+
+          <div class="panel panel-footer text-center">
+            <%= submit_tag "Make a reservation", :class => "btn btn-primary" %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+
+  <% end %>
+<% end %>
