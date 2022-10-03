@@ -1,18 +1,68 @@
-<%= nav_bar static: :top, :responsive => true do %>
-  <%= menu_group :pull => :left do %>
-    <%= menu_item "Home", root_path %>
-    <%= menu_item "Restaurants", restaurants_path %>
-    <%= menu_item "Friends", users_friendships_path if current_user && current_user.guest? %>
-    <%= menu_item "Managers", managers_path if current_user && current_user.admin? %>
-    <%= menu_item "Visits", users_reviews_path if current_user && current_user.guest? %>
-    <%= menu_item "Invitations", guest_invitations_path(current_user) if current_user && current_user.guest? %>
+<nav class="navbar navbar-expand-md navbar-dark shadow-sm">
+  <%= link_to root_path, class: 'navbar-brand' do %>
+    <%# <%= image_tag "bank.svg", data: { svg_fallback: asset_path('bank.svg') }, class: 'svg-inline' %>
+    Restaurant
   <% end %>
-  <%= menu_group :pull => :right do %>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-content" aria-controls="navbar-content" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbar-content">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <%= link_to restaurants_path, class: 'nav-link' do %>
+       <i class="fas fa-hamburger"></i>
+          Restaurants
+        <% end %>
+      </li>
+      <% if current_user && current_user.guest? %>
+        <li class="nav-item">
+          <%= link_to users_friendships_path , class: 'nav-link' do %>
+            <i class="fab fa-earlybirds"></i>
+            Friends
+          <% end %>
+        </li>
+        <li class="nav-item">
+          <%= link_to users_reviews_path, class: 'nav-link' do %>
+            <i class="fab fa-reddit"></i>
+            Visits
+          <% end %>
+        </li>
+        <li class="nav-item">
+          <%= link_to guest_invitations_path(current_user), class: 'nav-link' do %>
+            <i class="fab fa-whatsapp"></i>
+            Invitations
+          <% end %>
+        </li>
+      <% end %>
+      <li class="nav-item">
+        <% if current_user && current_user.admin? %>
+          <%= link_to managers_path , class: 'nav-link' do %>
+          <i class="fab fa-jenkins"></i>
+            Managers
+          <% end %>
+        <% end %>
+      </li>
+    </ul>
+    <ul class="navbar-nav my-2 my-md-0">
+      <li class="nav-item">
 
-    <% if current_user %>
-      <%= menu_item "Add manager", new_manager_path if current_user.admin? %>
-      <%= menu_item "My profile", guest_path(current_user) if current_user.guest? %>
-    <% end %>
-
-  <% end %>
-<% end %>
+        <% if current_user %>
+        <% if current_user.admin? %>
+          <%= link_to new_manager_path, class: 'nav-link d-lg-block' do %>
+            <i class="fab fa-jenkins"></i>
+            Add Manager
+          <% end %>
+        <% end %>
+      </li>
+      <li class="nav-item">
+        <% if current_user.guest? %>
+          <%= link_to guest_path(current_user), class: 'nav-link d-lg-block' do %>
+            <i class="fab fa-odnoklassniki"></i>
+            My Profile
+          <% end %>
+        <% end %>
+        <% end %>
+      </li>
+    </ul>
+  </div>
+</nav>
