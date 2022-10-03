@@ -8,6 +8,7 @@ class Restaurant < ApplicationRecord
   has_many :managers, -> { where(role: 'manager') }
   has_one :seats_configuration, dependent: :destroy
   has_many :reviews, dependent: :destroy
+  has_many :seats, through: :seats_configuration, dependent: :destroy
   has_one :menu
 
   validates_presence_of :title
