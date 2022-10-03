@@ -41,10 +41,10 @@ class User < ApplicationRecord
 
     friendships.each do |friendship|
       avg_rating = friendship.friend.reviews.where(restaurant_id:).average(:rating).to_f
-      ratings << avg_rating unless avg_rating == 0
+      ratings << avg_rating unless avg_rating.zero?
     end
 
-    if ratings.count == 0
+    if ratings.count.zero?
       'Not rated yet'
     else
       rating = ratings.sum / ratings.count

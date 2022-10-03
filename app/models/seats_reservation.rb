@@ -1,3 +1,2 @@
 class SeatsReservation < ApplicationRecord
-    
 end

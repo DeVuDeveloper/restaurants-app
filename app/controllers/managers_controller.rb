@@ -15,7 +15,6 @@ class ManagersController < ApplicationController
 
   def create
     @manager = Manager.new(manager_params)
-    
 
     respond_to do |format|
       if @manager.save

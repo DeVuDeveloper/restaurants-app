@@ -1,17 +1,15 @@
 class MealsController < ApplicationController
   before_action :set_restaurant
-  before_action :set_menu, only: [:new, :show, :edit, :update, :destroy]
-  before_action :set_meal, only: [:show, :edit, :update, :destroy]
+  before_action :set_menu, only: %i[new show edit update destroy]
+  before_action :set_meal, only: %i[show edit update destroy]
 
-  def show
-  end
+  def show; end
 
   def new
     @meal = Meal.new
   end
 
-  def edit
-  end
+  def edit; end
 
   def create
     @meal = Meal.new(meal_params)
@@ -48,16 +46,17 @@ class MealsController < ApplicationController
   end
 
   private
+
   def set_menu
     @menu = @restaurant.menu
   end
 
   def set_restaurant
-    if current_user.manager?
-      @restaurant = current_user.restaurant
-    else
-      @restaurant = Restaurant.find(params[:restaurant_id])
-    end
+    @restaurant = if current_user.manager?
+                    current_user.restaurant
+                  else
+                    Restaurant.find(params[:restaurant_id])
+                  end
   end
 
   def set_meal

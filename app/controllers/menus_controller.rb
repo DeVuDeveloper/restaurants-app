@@ -1,16 +1,14 @@
 class MenusController < ApplicationController
-  before_action :set_restaurant, only: [:show, :create, :edit, :update, :destroy]
-  before_action :set_menu, only: [:show, :edit, :update, :destroy]
+  before_action :set_restaurant, only: %i[show create edit update destroy]
+  before_action :set_menu, only: %i[show edit update destroy]
 
-  def show
-  end
+  def show; end
 
   def new
     @menu = Menu.new
   end
 
-  def edit
-  end
+  def edit; end
 
   def create
     @menu = @restaurant.build_menu(menu_params)
@@ -47,16 +45,17 @@ class MenusController < ApplicationController
   end
 
   private
+
   def set_menu
     @menu = @restaurant.menu
   end
 
   def set_restaurant
-    if current_user.manager?
-      @restaurant = current_user.restaurant
-    else
-      @restaurant = Restaurant.find(params[:restaurant_id])
-    end
+    @restaurant = if current_user.manager?
+                    current_user.restaurant
+                  else
+                    Restaurant.find(params[:restaurant_id])
+                  end
   end
 
   def menu_params

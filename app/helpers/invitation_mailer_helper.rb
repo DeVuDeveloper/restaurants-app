@@ -1,4 +1,2 @@
 module InvitationMailerHelper
-
-
 end

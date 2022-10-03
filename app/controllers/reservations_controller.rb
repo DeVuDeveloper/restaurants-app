@@ -26,12 +26,12 @@ class ReservationsController < ApplicationController
         seat.with_lock do
           if seat.reserved?(reservation_params[:date])
             redirect_to @restaurant,
-                        alert: 'Some seats have been reserved meanwhile. We are sorry for the inconvenience' and return
+                        alert: 'Some seats have been reserved meanwhile. We are sorry for the inconvenience'
           end
 
           seat.reservations << @reservation
 
-          redirect_to @restaurant, alert: @reservation.errors and return unless seat.save
+          redirect_to @restaurant, alert: @reservation.errors unless seat.save
         end
       end
 

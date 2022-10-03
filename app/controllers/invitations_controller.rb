@@ -17,7 +17,8 @@ class InvitationsController < ApplicationController
         if @invitation.update(invitation_params)
           format.html do
             redirect_to root_path,
-                        notice: "Thanks #{@user.first_name}, you have accepted an invitation to #{@invitation.restaurant.title} restaurant."
+                        notice: "Thanks #{@user.first_name},
+                         you have accepted an invitation to #{@invitation.restaurant.title} restaurant."
           end
         else
           format.html { render :edit }
