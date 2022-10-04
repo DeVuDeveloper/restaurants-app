@@ -52,6 +52,10 @@ class User < ApplicationRecord
     end
   end
 
+  def blank_stars
+    5 - friends_rating(restaurant_id).to_i
+  end
+
   def friend?(guest)
     !friendships.where(user_id: id, friend_id: guest.id).empty?
   end

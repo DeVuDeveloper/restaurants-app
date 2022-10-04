@@ -26,11 +26,15 @@
             <h4 class="my-0 font-weight-normal text-white"><strong>Distance: </strong><%= restaurant.distance_from(current_user, :units => :meters).round(2) %></h4>
           </div>
           <div class="card-title h2 mb-3">
-            <% if current_user.guest? %>
-              <%= current_user.friends_rating(restaurant.id).to_i.times do %>
-                <i class='fas fa-star fa-xs' style='color:#d5bc1a'></i>
+            
+              <% current_user.friends_rating(restaurant.id).to_i.times do %>
+                <span class="glyphicon glyphicon-star" style='color:#d5bc1a'></span>
+             <% end %>
+            
+              <% (5 - (current_user.friends_rating(restaurant.id).to_i)).times do %>
+               <span class="glyphicon glyphicon-star-empty", style='color:#d5bc1a'></span>
               <% end %>
-            <% end %>
+            
           </div>
           <div class="card-header d-flex justify-content-around p-0 m-0">
             <%= link_to 'Reserve', restaurant,  class: "btn btn-lg  text-white p-0 bg-dark p-2 px-5 m-0" %>

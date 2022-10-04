@@ -6,13 +6,17 @@
 }
 
 .bck-card {
-  
   background: linear-gradient(
-    180.45deg,
-    rgba(59, 58, 58, 0) 0.75%,
-    rgba(12, 12, 12, 0.9) 92.94%
-  ), url(https://media-cdn.tripadvisor.com/media/photo-s/19/a6/29/36/tradicionalni-restoran.jpg);
-   
+      180.45deg,
+      rgba(59, 58, 58, 0) 0.75%,
+      rgba(12, 12, 12, 0.9) 92.94%
+    ),
+    url(https://media-cdn.tripadvisor.com/media/photo-s/19/a6/29/36/tradicionalni-restoran.jpg);
+
   background-repeat: no-repeat;
   background-size: cover;
+}
+
+.glyphicon {
+  font-size: 20px;
 }
