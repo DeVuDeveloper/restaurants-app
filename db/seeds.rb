@@ -15,15 +15,18 @@
 res_eat_good = Restaurant.create!(:title => "Bubby's",
                                   :lat => rand(45.244..45.269),
                                   :lng => rand(19.8233..19.83467),
-                                  :description => "Bubby’s opened on Thanksgiving Day 1990. Chef")
+                                  :description => "Fish",
+                                  :image => "https://media-cdn.tripadvisor.com/media/photo-s/18/5e/17/62/restaurant.jpg")
  Restaurant.create!(:title => "Old Ebbitt Grill",
                                   :lat => rand(45.244..45.269),
                                   :lng => rand(19.8233..19.83467),
-                                  :description => "The Old Ebbitt Grill, Washington's oldest saloon")
+                                  :description => "Grill",
+                                  :image => "https://img.freepik.com/free-photo/restaurant-hall-with-red-brick-walls-wooden-tables-pipes-ceiling_140725-8504.jpg?w=2000")
  Restaurant.create!(:title => "Cutlets",
                                   :lat => rand(45.244..45.269),
                                   :lng => rand(19.8233..19.83467),
-                                  :description => "Simply put, we’re here to bring you a sandwich experience you can feel good about.")
+                                  :description => "Vegan",
+                                  :image => "https://cdn.londonandpartners.com/-/media/images/london/visit/things-to-do/food-and-drink/restaurants/sketch/sketch-restaurant-the-gallery-yellow-2022-640x360.jpg?mw=640&hash=04D57E17D11D4A9B7969F290056583F42EB282E0")
 
 configuration_1 = SeatsConfiguration.new(:restaurant_id => res_eat_good.id)
 p "Seats configuration created"
@@ -37,7 +40,8 @@ p "Created seats"
 every_nice = Restaurant.create!(:title => "Everything is nice here",
                                 :lat => rand(45.244..45.269),
                                 :lng => rand(19.8233..19.83467),
-                                :description => "Meat")
+                                :description => "Meat",
+                                :image => "https://cdn.vox-cdn.com/thumbor/OheW0CNYdNihux9eVpJ958_bVCE=/0x0:5996x4003/1200x900/filters:focal(1003x1633:1961x2591)/cdn.vox-cdn.com/uploads/chorus_image/image/51830567/2021_03_23_Merois_008.30.jpg")
 configuration_1 = SeatsConfiguration.new(:restaurant_id => every_nice.id)
 
 20.times do |number|
@@ -48,7 +52,8 @@ configuration_1.save!
 all_u_can_eat = Restaurant.create!(:title => "All you can eat",
                                    :lat => rand(45.244..45.269),
                                    :lng => rand(19.8233..19.83467),
-                                   :description => "Vegetables")
+                                   :description => "Vegetables",
+                                   :image => "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8cmVzdGF1cmFudHxlbnwwfHwwfHw%3D&w=1000&q=80")
 configuration_1 = SeatsConfiguration.new(:restaurant_id => all_u_can_eat.id)
 
 20.times do |number|

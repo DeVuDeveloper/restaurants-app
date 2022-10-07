@@ -27,7 +27,7 @@ module RestaurantsHelper
         hidden_field_tag("seat_#{x}_#{y}[x]", x) +
           hidden_field_tag("seat_#{x}_#{y}[y]", y) +
           check_box_tag("seat_#{x}_#{y}[reserved]", true, false) +
-          content_tag('span', nil, class: 'fa fa-check-circle') +
+          content_tag('span', nil, class: 'fa fa-table') +
           content_tag(:h5, '')
       end
     end

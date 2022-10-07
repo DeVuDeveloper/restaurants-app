@@ -10,26 +10,26 @@
     <ul class="navbar-nav mr-auto">
       <li class="nav-item">
         <%= link_to restaurants_path, class: 'nav-link' do %>
-       <i class="fas fa-hamburger"></i>
+       <i class="glyphicon glyphicon-glass"></i>
           Restaurants
         <% end %>
       </li>
       <% if current_user && current_user.guest? %>
         <li class="nav-item">
           <%= link_to users_friendships_path , class: 'nav-link' do %>
-            <i class="fab fa-earlybirds"></i>
+            <i class="glyphicon glyphicon-thumbs-up"></i>
             Friends
           <% end %>
         </li>
         <li class="nav-item">
           <%= link_to users_reviews_path, class: 'nav-link' do %>
-            <i class="fab fa-reddit"></i>
+            <i class="glyphicon glyphicon-eye-open"></i>
             Visits
           <% end %>
         </li>
         <li class="nav-item">
           <%= link_to guest_invitations_path(current_user), class: 'nav-link' do %>
-            <i class="fab fa-whatsapp"></i>
+            <i class="glyphicon glyphicon-time"></i>
             Invitations
           <% end %>
         </li>
@@ -37,7 +37,7 @@
       <li class="nav-item">
         <% if current_user && current_user.admin? %>
           <%= link_to managers_path , class: 'nav-link' do %>
-          <i class="fab fa-jenkins"></i>
+          <i class="glyphicon glyphicon-user"></i>
             Managers
           <% end %>
         <% end %>
@@ -49,7 +49,7 @@
         <% if current_user %>
         <% if current_user.admin? %>
           <%= link_to new_manager_path, class: 'nav-link d-lg-block' do %>
-            <i class="fab fa-jenkins"></i>
+            <i class="glyphicon glyphicon-user"></i>
             Add Manager
           <% end %>
         <% end %>
@@ -57,7 +57,7 @@
       <li class="nav-item">
         <% if current_user.guest? %>
           <%= link_to guest_path(current_user), class: 'nav-link d-lg-block' do %>
-            <i class="fab fa-odnoklassniki"></i>
+            <i class="glyphicon glyphicon-user"></i>
             My Profile
           <% end %>
         <% end %>
