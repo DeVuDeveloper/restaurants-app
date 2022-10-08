@@ -23,7 +23,7 @@ require('bootstrap/dist/js/bootstrap');
 
 import 'bootstrap';
 import 'underscore';
-import '../stylesheets/application';
+
 
 window.jQuery = $;
 window.$ = $;
