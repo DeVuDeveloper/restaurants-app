@@ -10,7 +10,7 @@ require('@rails/ujs').start();
 require('@rails/activestorage').start();
 require('channels');
 require('gmaps_google');
-require('@fortawesome/fontawesome-free');
+
 
 require('jquery');
 require('@rails/ujs').start();
