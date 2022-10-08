@@ -8,7 +8,7 @@ class Seat < ApplicationRecord
 
     reservations.each do |reservation|
       date_range = reservation.date.localtime..reservation.date.localtime + reservation.duration.hours
-      return true if date_range.cover?(time.to_time)
+      return true if date_range.cover?(time)
     end
     false
   end

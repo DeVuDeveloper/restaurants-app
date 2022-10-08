@@ -77,3 +77,5 @@ gem 'owlcarousel-rails'
 gem 'railties', '~> 6.1', '>= 6.1.4.1'
 gem 'twitter-bootstrap-rails'
 gem 'zeitwerk', '~> 2.6'
+
+gem 'simple_form', '~> 5.1.0'
