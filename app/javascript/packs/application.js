@@ -19,7 +19,7 @@ require('turbolinks').start();
 require('channels');
 require('bootstrap/dist/js/bootstrap');
 
-import '../stylesheets/application';
+
 
 import 'bootstrap';
 import 'underscore';
