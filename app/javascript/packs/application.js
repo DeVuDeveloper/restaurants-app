@@ -20,7 +20,6 @@ require('channels');
 require('bootstrap/dist/js/bootstrap');
 
 import '../stylesheets/application';
-import './bootstrap_custom.js';
 
 import 'bootstrap';
 import 'underscore';
