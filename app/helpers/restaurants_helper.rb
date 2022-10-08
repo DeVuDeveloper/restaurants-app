@@ -15,6 +15,7 @@ module RestaurantsHelper
     content_tag(:label, nil, class: 'btn btn-default', style: 'background-color: #B71C1C', disabled: true) do
       content_tag(:div, class: 'itemcontent configuration-check-box', disabled: true) do
         check_box_tag(' ', nil, nil, disabled: true) +
+        content_tag(:span, nil, class: 'fa fa-ban fa-2x') +
           content_tag(:h5, '')
       end
     end
@@ -26,7 +27,7 @@ module RestaurantsHelper
         hidden_field_tag("seat_#{x}_#{y}[x]", x) +
           hidden_field_tag("seat_#{x}_#{y}[y]", y) +
           check_box_tag("seat_#{x}_#{y}[reserved]", true, false) +
-          content_tag('span', nil, class: 'fa fa-car fa-2x') +
+          content_tag('span', nil, class: 'fa fa-table') +
           content_tag(:h5, '')
       end
     end
@@ -36,7 +37,7 @@ module RestaurantsHelper
     content_tag(:label, nil, class: 'btn btn-default', disabled: true) do
       content_tag(:div, class: 'itemcontent configuration-check-box') do
         check_box_tag(' ') +
-          content_tag(:span, nil, class: 'fa fa-ban fa-2x') +
+        content_tag('span', nil, class: 'fa fa-circle-thin') +
           content_tag(:h5, '')
       end
     end

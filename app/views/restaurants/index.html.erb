@@ -1,52 +1,44 @@
-<h1>Listing Restaurants</h1>
-
+<h1>Restaurants</h1>
 <%= link_to "Sort by title",
             restaurants_path(:sort => "title"),
-            :class => "btn btn-info" %>
+            :class => "btn btn-dark text-light" %>
 <%= link_to "Sort by description",
             restaurants_path(:sort => "description"),
-            :class => "btn btn-info" %>
+            :class => "btn btn-dark text-light" %>
 <%= link_to "Sort by distance",
             restaurants_path(:distance => "distance"),
-            :class => "btn btn-info" %>
+            :class => "btn btn-dark text-light" %>
 <%= link_to "Unsort",
             restaurants_path,
-            :class => "btn btn-info" %>
-<div class="table-responsive">
-  <table class="table">
-    <thead>
-      <tr>
-        <th>Title</th>
-        <th>Description</th>
-        <th>Distance (m)</th>
-        <th>Rating</th>
-        <% if current_user.guest? %>
-          <th>Friends rating</th>
-        <% end %>
-        <th colspan="3"></th>
-      </tr>
-    </thead>
-
-    <tbody>
-      <% @restaurants.each do |restaurant| %>
-        <tr>
-          <td><%= restaurant.title %></td>
-          <td><%= restaurant.description %></td>
-          <td><%= restaurant.distance_from(current_user, :units => :meters).round(2) %></td>
-          <td><%= restaurant.rating == 0 ? "Not rated yet" : restaurant.rating.round(2) %>
-          <% if current_user.guest? %>
-            <td><%= current_user.friends_rating(restaurant.id) %>
+            :class => "btn btn-dark text-light" %>
+<div class="row mt-4">
+  <% @restaurants.each do |restaurant| %>
+    <div class="px-3 mb-4 mb-md-5 col col-12 col-sm-6 col-md-4">
+      <div class="card shadow text-center bck-card">
+        <%= image_tag("#{restaurant.image}",  style: "height: 230px; width: auto") %>
+        <div class="card-header bg-dark">
+          <h2 class="my-0 font-weight-bold text-white"><%= restaurant.title %></h2>
+        </div>
+        <div class="card-body">
+          <h4 class="my-0 font-weight-normal text-white pt-1"><%= restaurant.description %></h4>
+          <h4 class="my-0 font-weight-normal text-white pt-1"><strong>Distance: </strong><%= restaurant.distance_from(current_user, :units => :meters).round(2) %></h4>
+          
+          <% current_user.friends_rating(restaurant.id).to_i.times do %>
+            <span class="glyphicon glyphicon-star mb-2" style='color:#d5bc1a'></span>
           <% end %>
-          <td><%= link_to 'Reservation', restaurant %></td>
-          <td><%= link_to 'Your reservations', restaurant_reservations_path(restaurant) if current_user.guest? %>
-          <td><%= link_to 'Edit', edit_restaurant_path(restaurant) if current_user.restaurant_manager(restaurant) %></td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
+          <% (5 - (current_user.friends_rating(restaurant.id).to_i)).times do %>
+            <span class="glyphicon glyphicon-star-empty pb-2", style='color:#d5bc1a'></span>
+          <% end %>
+         
+          <div class="card-header d-flex justify-content-around p-0 m-0">
+            <%= link_to 'Reserve', restaurant,  class: "btn btn-lg  text-white p-0 bg-dark p-2 px-5 m-0" %>
+            <%= link_to 'Reservations', restaurant_reservations_path(restaurant) , class: "btn btn-lg  text-white p-0 bg-dark p-2 m-0" if current_user.guest? %>
+            <%= link_to 'Edit', edit_restaurant_path(restaurant), class: "btn btn-lg btn-block button-card text-white m-0" if current_user.restaurant_manager(restaurant) %>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
 </div>
-
 <br>
-
 <%= link_to 'New Restaurant', new_restaurant_path if current_user.admin? %>
-

@@ -26,11 +26,16 @@
 
 ## Screenshot
 
-![Screenshot](app/assets/images/screenshot2.jpg)
+![Screenshot](app/assets/images/screenshot.png)
 
 ## Description 🏗️
 
-...
+Restaurants App are awesome application made with ruby on rails, for desktop(for mobile devices in construction).
+The user can see the list of nearby restaurants and search the list of guests and find friends.The user can see the restaurant's location and address on Google Maps, even can get address of restaurant. Then user can reserve a certain table in the restaurant. If a table is already reserved, the user cannot reserve the same table. When making a reservation, the user can invite friends.
+Emails are sent to friends and to restaurant where table is reserved.
+User friends receive an invitation and can accept or decline. If they accept it, they can rate the restaurant after visiting the restaurant.
+Admin can add managers.
+Managers can create a restaurant, add location, meals and table configuration.
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 

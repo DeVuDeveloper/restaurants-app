@@ -1,3 +1,20 @@
 // Place all the styles related to the Restaurants controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.button-card {
+  background-color: rgb(25, 24, 24);
+  border: 3px solid green;
+}
+
+.bck-card {
+  background: linear-gradient(
+      180.45deg,
+      rgba(125, 223, 6, 0) 0.75%,
+      rgba(241, 83, 4, 0.9) 92.94%
+    );
+  border: 3px solid rgb(167, 108, 48);
+}
+
+.glyphicon {
+  font-size: 20px;
+}

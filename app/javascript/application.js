@@ -16,7 +16,7 @@
 //= require twitter/bootstrap
 //= require owl.carousel
 //= require moment
-//= require bootstrap-datetimepicker
+
 //= require underscore
 //= require gmaps_google
 //= require_tree .

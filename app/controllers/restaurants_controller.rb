@@ -16,6 +16,7 @@ class RestaurantsController < ApplicationController
     @configuration = @restaurant.seats_configuration
     @seats = @configuration.seats
     @date = params[:date]
+
   end
 
   def new
@@ -69,6 +70,6 @@ class RestaurantsController < ApplicationController
   end
 
   def restaurant_params
-    params.require(:restaurant).permit(:title, :description, :lat, :lng)
+    params.require(:restaurant).permit(:title, :description, :lat, :lng, :image)
   end
 end

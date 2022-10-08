@@ -11,22 +11,21 @@
             <div class="panel panel-heading"><%= invitation.restaurant.title %> restaurant invitation</div>
             <div class="panel panel-body">
               <p>
-                Your friend, <b><%= invitation.reservation.user.first_name %></b> has invited you to
+               <b>Hi <%= invitation.first_name %> <%= invitation.last_name %></b>,
+               </br>
+                Your friend <b><%= invitation.reservation.user.first_name %></b> has invited you to
                 <b><%= invitation.restaurant.title %></b> restaurant.
-
-                When?
+                </br>
                 <b><%= l invitation.date, :format => :date_with_time %></b>
                 for
                 <b><%= invitation.duration %> <%= invitation.duration == 1 ? "hour" : "hours" %>.</b>
+                </br>
                 Who else is coming?
+                </br>
                 <% invitation.reservation.invitations.each do |invite| %>
                   <% if current_user.id == invite.user_id %>
 
-                    <b><%= invite.reservation.user.first_name %> <%= invite.reservation.user.last_name %> </b> - they invited you
-
-                  <% else %>
-
-                    <b><%= invite.first_name %> <%= invite.last_name %></b>
+                    <b><%= invite.reservation.user.first_name %> <%= invite.reservation.user.last_name %> </b>
 
                   <% end %>
                 <% end %>
@@ -48,9 +47,9 @@
                   </div>
                 <% elsif %>
                   <% if invitation.confirmed %>
-                    You have accepted this invitation.
+                    <h5>You have <strong>accepted</strong> this invitation.</h5>
                   <% else %>
-                    You have <b>not</b> accepted this invitation.
+                    <h5>You have <b>not</b> accepted this invitation.</h5>
                   <% end %>
                 
               <% else %>

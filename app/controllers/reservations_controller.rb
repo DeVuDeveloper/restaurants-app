@@ -28,10 +28,12 @@ class ReservationsController < ApplicationController
             redirect_to @restaurant,
                         alert: 'Some seats have been reserved meanwhile. We are sorry for the inconvenience'
           end
+          if @reservation.date
+            seat.reservations << @reservation
 
-          seat.reservations << @reservation
-
-          redirect_to @restaurant, alert: @reservation.errors unless seat.save
+          else
+            flash[:alert] = 'Please add date'
+          end
         end
       end
 
@@ -43,8 +45,14 @@ class ReservationsController < ApplicationController
                                                 confirmed: nil)
         InvitationMailer.invitation_mail(friend, invitation).deliver_now
       end
+      if @reservation.save
+        redirect_to @restaurant, notice: 'Reservation was successfully created.'
 
-      redirect_to @restaurant, notice: 'Reservation was successfully created.' and return
+      else
+
+        flash[:alert] = 'Something went wrong'
+
+      end
     end
   end
 

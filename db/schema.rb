@@ -73,6 +73,7 @@ ActiveRecord::Schema.define(version: 2022_10_02_110039) do
   create_table "restaurants", force: :cascade do |t|
     t.string "title"
     t.text "description"
+    t.string "image"
     t.float "lat"
     t.float "lng"
     t.datetime "created_at", precision: 6, null: false
@@ -96,7 +97,7 @@ ActiveRecord::Schema.define(version: 2022_10_02_110039) do
   create_table "seats", force: :cascade do |t|
     t.integer "x"
     t.integer "y"
-    t.boolean "reserved"
+    t.boolean "reserved", default: false
     t.bigint "seats_configuration_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
