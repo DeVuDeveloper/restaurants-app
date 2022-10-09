@@ -10,7 +10,7 @@ class User < ApplicationRecord
                    lat_column_name: :lat,
                    lng_column_name: :lng
 
-  belongs_to :restaurant, optional: true
+ 
 
   has_many :friendships
   has_many :invitations
