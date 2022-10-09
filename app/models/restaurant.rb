@@ -23,8 +23,7 @@ class Restaurant < ApplicationRecord
     @restaurants.each do |a|
       distances_arr << a.distance_from(current_user, units: :meters).to_i
     end
-
-    distances_arr.sort
+    distances_arr.map(&:to_i).sort
   end
 end
 
