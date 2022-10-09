@@ -17,7 +17,7 @@
         </div>
         <div class="card-body">
           <h4 class="my-0 font-weight-normal text-white pt-1"><%= restaurant.description %></h4>
-          <h4 class="my-0 font-weight-normal text-white pt-1"><strong>Distance: </strong><%= restaurant.distance_from(current_user, :units => :kms).round(2) %></h4>
+          <h4 class="my-0 font-weight-normal text-white pt-1"><strong>Distance: </strong><%= restaurant.distance_from(current_user, :units => :kms).round(2) %> km</h4>
           
           <% current_user.friends_rating(restaurant.id).to_i.times do %>
             <span class="glyphicon glyphicon-star mb-2" style='color:#d5bc1a'></span>
