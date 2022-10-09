@@ -6,7 +6,7 @@
     <img src="./app/assets/images/logo.png" alt="Logo" width="200" height="150">
   </a>
 
-  <h1 align="center">Restaurant App</h1>
+  <h1 align="center">.Restaurant App</h1>
 
   <p align="center">
    
