@@ -1,3 +1,4 @@
+
 <div class="jumbotron restaurant">
   <h1><strong><%= @restaurant.title %></strong></h1>
   <p>
@@ -44,13 +45,14 @@
 <div class="col-md-12"><br>
 </div>
 <script>
+ 
   const handler = Gmaps.build('Google');
   handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
     markers = handler.addMarkers([
       {
-        "lat": <%= current_user.lat %>,
-        "lng": <%= current_user.lng%>,
-        "infowindow": "<%= current_user.full_name %>'s location"
+        "lat": <%= @restaurant.lat %>,
+        "lng": <%= @restaurant.lng %>,
+        "infowindow": "<%= @restaurant.title %>'s location"
       }
     ]);
     handler.bounds.extendWith(markers);
@@ -58,4 +60,5 @@
     handler.getMap().setZoom(17);
   });
 </script>
+<%= console %>
 
