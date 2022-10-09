@@ -34,7 +34,7 @@
          
           <div class="card-header d-flex justify-content-around p-0 m-0">
         
-            <%= link_to 'Reserve', restaurant,  class: "btn btn-lg  text-white p-0 bg-dark p-2 px-5 m-0 my_link" %>
+            <%= link_to 'Reserve', restaurant,  class: "btn btn-lg  text-white p-0 bg-dark p-2 px-5 m-0" %>
             <%= link_to 'Reservations', restaurant_reservations_path(restaurant) , class: "btn btn-lg  text-white p-0 bg-dark p-2 m-0" if current_user.guest? %>
             <%= link_to 'Edit', edit_restaurant_path(restaurant), class: "btn btn-lg btn-block button-card text-white m-0" if current_user.restaurant_manager(restaurant) %>
           </div>
