@@ -41,7 +41,7 @@ Managers can create a restaurant, add location, meals and table configuration.
 
 ## Live Demo
 
-([Heroku link]())
+([Heroku link](,))
 
 ## Getting Started 🏁
 
