@@ -8,9 +8,9 @@
 
 
 admin = Admin.create!(:email => "admin@mail.com",
-                  :password => "admin1",
-                  :password_confirmation => "admin1")
- p "Created admin"
+                 :password => "admin1",
+                 :password_confirmation => "admin1")
+p "Created admin"
 
 res_eat_good = Restaurant.create!(:title => "La Lampada",
                                   :lat => 41.90723,
