@@ -1,10 +1,10 @@
 <h1>Restaurants</h1>
 <%= link_to "Sort by title",
             restaurants_path(:sort => "title"),
-            :class => "btn btn-dark text-light" %>
+            :class => "btn btn-dark text-light mb-1" %>
 <%= link_to "Sort by description",
             restaurants_path(@konj),
-            :class => "btn btn-dark text-light" %>
+            :class => "btn btn-dark text-light mb-1" %>
 <%= link_to "Sort by distance",
             restaurants_path(:sort => "description"),
             :class => "btn btn-dark text-light" %>
@@ -55,4 +55,3 @@
 
     });
 </script> %>
-<% console %>
