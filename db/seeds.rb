@@ -23,16 +23,73 @@ res_eat_good = Restaurant.create!(:title => "La Lampada",
                                   :lng => 19.24702,
                                   :description => "Grill",
                                   :image => "https://img.freepik.com/free-photo/restaurant-hall-with-red-brick-walls-wooden-tables-pipes-ceiling_140725-8504.jpg?w=2000")
+
  Restaurant.create!(:title => "Ciro Purpetta",
                                   :lat => 41.90531,
                                   :lng => 12.50170,
                                   :description => "Vegan",
                                   :image => "https://cdn.londonandpartners.com/-/media/images/london/visit/things-to-do/food-and-drink/restaurants/sketch/sketch-restaurant-the-gallery-yellow-2022-640x360.jpg?mw=640&hash=04D57E17D11D4A9B7969F290056583F42EB282E0")
- Restaurant.create!(:title => "Casmocio D'Abruzzo",
-                                  :lat => 41.90531,
-                                  :lng => 12.50250,
+                                  
+Restaurant.create!(:title => "Casmocio D'Abruzzo",
+                                    :lat => 41.90531,
+                                    :lng => 12.50250,
+                                    :description => "Grill",
+                                    :image => "https://static.wixstatic.com/media/f0f42d_8964bcd019514071a74e0ac26449bec8~mv2.jpg/v1/fill/w_640,h_494,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/f0f42d_8964bcd019514071a74e0ac26449bec8~mv2.jpg")
+ Restaurant.create!(:title => "Avon",
+                                  :lat => 41.17372,
+                                  :lng => 20.68626,
                                   :description => "Grill",
-                                  :image => "https://static.wixstatic.com/media/f0f42d_8964bcd019514071a74e0ac26449bec8~mv2.jpg/v1/fill/w_640,h_494,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/f0f42d_8964bcd019514071a74e0ac26449bec8~mv2.jpg")
+                                  :image => "https://media-cdn.tripadvisor.com/media/photo-s/06/4a/ba/2b/2.jpg")
+ 
+ Restaurant.create!(:title => "Dredheza Beach",
+                                  :lat => 41.17276,
+                                  :lng => 20.68248,
+                                  :description => "Fish",
+                                  :image => "https://10619-2.s.cdn12.com/rests/original/404_52136220.jpg")
+                                  
+ Restaurant.create!(:title => "Vanila Plaza",
+                                  :lat => 41.17269,
+                                  :lng => 20.68314,
+                                  :description => "Grill",
+                                  :image => "https://10619-2.s.cdn12.com/c2/Restaurant-Vanila-Plazza-interior.jpg")
+                                    
+ Restaurant.create!(:title => "QUALAQI",
+                                  :lat => 41.71321,
+                                  :lng => 44.82193,
+                                  :description => "Lux",
+                                  :image => "https://media-cdn.tripadvisor.com/media/photo-s/12/34/29/d9/getlstd-property-photo.jpg")
+ 
+ Restaurant.create!(:title => "Marani",
+                                  :lat => 41.68786,
+                                  :lng => 44.81133,
+                                  :description => "Meat",
+                                  :image => "https://media-cdn.tripadvisor.com/media/photo-s/12/91/fd/4c/the-most-luxury-retaurant.jpg")
+
+ Restaurant.create!(:title => "Leila",
+                                  :lat => 41.69555,
+                                  :lng => 44.80649,
+                                  :description => "Traditional",
+                                  :image => "https://sakurageorgia.com/storage/app/media/uploaded-files/16602613_1857588131152001_5625685027364401548_n.jpg")
+
+ Restaurant.create!(:title => "Porto",
+                                  :lat => 42.44379,
+                                  :lng => 19.26145,
+                                  :description => "Lux",
+                                  :image => "https://foodbook.me/storage/restaurants/467/Lgxabb3zPxdDqL3TJLzf4WDLM454Dw3xn5nRlNnX.jpeg")
+ 
+ Restaurant.create!(:title => "Lanterna",
+                                  :lat => 42.42698,
+                                  :lng => 19.26046,
+                                  :description => "Konoba",
+                                  :image => "https://media-cdn.tripadvisor.com/media/photo-s/06/6b/3e/3e/lanterna-podgorica.jpg")
+
+ Restaurant.create!(:title => "Pod Volat",
+                                  :lat => 42.43537,
+                                  :lng => 19.25975,
+                                  :description => "Traditional",
+                                  :image => "https://media-cdn.tripadvisor.com/media/photo-s/06/ce/3f/29/pod-volat.jpg")
+
+
 p "Restaurants created"
 
 configuration_1 = SeatsConfiguration.new(:restaurant_id => res_eat_good.id)
