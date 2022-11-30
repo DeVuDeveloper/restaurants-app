@@ -80,6 +80,7 @@ test:
 # for a full overview on how database connection configuration can be specified.
 #
 production:
- <<: *default
- url: <%= ENV[‘DATABASE_URL’] %>
- database: restaurants_rails_production
+  <<: *default
+  database: restaurants_production
+  username: restaurants_rails
+  password: <%= ENV['RESTAURANTS_APP_DATABASE_PASSWORD'] %>
