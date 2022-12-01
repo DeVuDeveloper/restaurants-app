@@ -12,7 +12,9 @@ Rails.application.configure do
   # Rake tasks automatically ignore this option for performance.
   config.eager_load = true
   config.require_master_key = true 
-  config.hosts.clear
+  config.hosts = [
+    "restaurants-app-production.up.railway.app"
+  ]
 
   # Full error reports are disabled and caching is turned on.
   config.consider_all_requests_local       = false
