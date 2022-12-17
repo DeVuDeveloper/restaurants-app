@@ -12,7 +12,7 @@ Rails.application.configure do
   # Rake tasks automatically ignore this option for performance.
   config.eager_load = true
   config.require_master_key = true 
-  config.hosts << "restaurants-app-production.up.railway.app"
+  config.hosts << ""
 
   # Full error reports are disabled and caching is turned on.
   config.consider_all_requests_local       = false
@@ -24,7 +24,7 @@ Rails.application.configure do
 
   # Disable serving static files from the `/public` folder by default since
   # Apache or NGINX already handles this.
-  config.public_file_server.enabled = ENV['RAILS_SERVE_STATIC_FILES'].present? || ENV['RENDER'].present?
+  config.public_file_server.enabled = ENV['RAILS_SERVE_STATIC_FILES'].present?
 
   # Compress CSS using a preprocessor.
   # config.assets.css_compressor = :sass
@@ -65,7 +65,7 @@ Rails.application.configure do
   # config.active_job.queue_name_prefix = "restaurants_app_production"
 
   config.action_mailer.perform_caching = false
-  config.action_mailer.default_url_options = {:host => 'https://restaurants-dejan.herokuapp.com/', :protocol => 'http'}
+  config.action_mailer.default_url_options = {:host => '', :protocol => 'http'}
   config.action_mailer.perform_deliveries = true
 
   config.action_mailer.delivery_method = :smtp

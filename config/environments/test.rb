@@ -37,7 +37,7 @@ Rails.application.configure do
   config.active_storage.service = :test
 
   config.action_mailer.perform_caching = false
-  config.action_mailer.default_url_options = {:host => 'https://restaurants-dejan.herokuapp.com/', :protocol => 'http'}
+  config.action_mailer.default_url_options = {:host => '', :protocol => 'http'}
   config.action_mailer.perform_deliveries = true
 
   config.action_mailer.delivery_method = :smtp
