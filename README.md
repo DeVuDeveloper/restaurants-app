@@ -38,7 +38,7 @@ Managers can create a restaurant, add location, meals and table configuration.
 
 ## Live Demo
 
-([Heroku link](https://restaurants-dejan.herokuapp.com/))
+([Live Preview](https://restaurants-app-dejan.up.railway.app/))
 
 ## Getting Started 🏁
 
