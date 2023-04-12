@@ -326,6 +326,7 @@ DEPENDENCIES
   selenium-webdriver
   simple_form (~> 5.1.0)
   spring
+  sprockets-rails
   turbolinks (~> 5)
   twitter-bootstrap-rails
   tzinfo-data

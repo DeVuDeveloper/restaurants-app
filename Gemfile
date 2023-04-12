@@ -71,3 +71,6 @@ gem 'twitter-bootstrap-rails'
 gem 'zeitwerk', '~> 2.6'
 
 gem 'simple_form', '~> 5.1.0'
+
+gem "sprockets-rails"
+
