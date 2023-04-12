@@ -79,9 +79,6 @@ test:
 # Read https://guides.rubyonrails.org/configuring.html#configuring-a-database
 # for a full overview on how database connection configuration can be specified.
 #
+production:
   <<: *default
-  database: <%= ENV['PGDATABASE'] %>
-  username: <%= ENV['PGUSER'] %>
-  password: <%= ENV['PGPASSWORD'] %>
-  host: <%= ENV['PGHOST'] %>
-  port: <%= ENV['PGPORT'] %>
+  url: <%= ENV['DATABASE_URL'] %>
