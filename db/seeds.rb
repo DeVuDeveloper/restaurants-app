@@ -104,7 +104,7 @@ every_nice = Restaurant.create!(:title => "Del Secolo",
                                 :lat => 41.90465,
                                 :lng => 12.50494,
                                 :description => "Grill",
-                                :image => "https://cdn.vox-cdn.com/thumbor/OheW0CNYdNihux9eVpJ958_bVCE=/0x0:5996x4003/1200x900/filters:focal(1003x1633:1961x2591)/cdn.vox-cdn.com/uploads/chorus_image/image/51830567/2021_03_23_Merois_008.30.jpg")
+                                :image => "https://img.tuscanyaccommodation.com/properties/il-chiostro-del-carmine/il-chiostro-del-carmine_7_tinaia_-_chiostro_del_carmine.jpg?fit=clip&h=900")
 configuration_1 = SeatsConfiguration.new(:restaurant_id => every_nice.id)
 
 20.times do |number|
