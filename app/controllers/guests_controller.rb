@@ -1,7 +1,7 @@
 class GuestsController < ApplicationController
   before_action :set_guest, only: %i[show edit update destroy]
   before_action :set_guests, only: [:show]
-
+  
   def index
     @guests = Guest.all
   end

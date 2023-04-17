@@ -1,8 +1,3 @@
-<h1>Listing Vistis</h1>
-
-<% current_user.reservations.each { |res| res.expired? } %>
-<% current_user.invitations.each { |res| res.expired? } %>
-
 <div class="table-responsive">
   <table class="table">
     <thead>
@@ -33,9 +28,7 @@
                   <b><%= invite.reservation.user.first_name %> <%= invite.reservation.user.last_name %> </b> - they invited you
 
                 <% else %>
-
                   <%= invite.first_name %> <%= invite.last_name %>
-
                 <% end %>
               <% end %>
             <% end %>

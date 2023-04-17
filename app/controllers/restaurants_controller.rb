@@ -3,12 +3,10 @@ class RestaurantsController < ApplicationController
 
   def index
     if params[:sort]
-      @restaurants = Restaurant.all.order(params[:sort])
-    elsif params[:distance]
-      @restaurants = Restaurant.all
-      @restaurants.sort_by { |r| r.distance_to(current_user) }
+      @sorted_restaurants = Restaurant.all.order(params[:sort])
     else
       @restaurants = Restaurant.all
+      @sorted_restaurants = @restaurants.sort_by { |r| r.distance_from(current_user, units: :meters).round(0) }
     end
   end
 
@@ -16,7 +14,6 @@ class RestaurantsController < ApplicationController
     @configuration = @restaurant.seats_configuration
     @seats = @configuration.seats
     @date = params[:date]
-
   end
 
   def new

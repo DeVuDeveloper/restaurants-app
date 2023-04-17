@@ -16,17 +16,27 @@ class Restaurant < ApplicationRecord
   before_create :tap_configuration
   before_create :tap_menu
 
-  def rating
-    Review.all.where(restaurant_id: id).average(:rating).to_f
+  def distances(current_user)
+    distances_arr = []
+
+    @restaurants = Restaurant.all
+    @restaurants.each do |a|
+      distances_arr << a.distance_from(current_user, units: :meters).to_i
+    end
+    distances_arr.map(&:to_i).sort
   end
+end
+
+def rating
+  Review.all.where(restaurant_id: id).average(:rating).to_f
+end
 
   private
 
-  def tap_configuration
-    build_seats_configuration
-  end
+def tap_configuration
+  build_seats_configuration
+end
 
-  def tap_menu
-    build_menu
-  end
+def tap_menu
+  build_menu
 end
